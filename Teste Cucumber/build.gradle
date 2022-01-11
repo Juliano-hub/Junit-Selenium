@@ -1,0 +1,38 @@
+plugins {
+    id 'org.jetbrains.intellij' version '1.1.4'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    //implementation files('libs/client-combined-3.141.59.jar')
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.141.59'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'io.cucumber:cucumber-java:6.10.4'
+    testImplementation 'io.cucumber:cucumber-java8:6.10.4'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = '2021.2'
+}
+patchPluginXml {
+    changeNotes = """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}
